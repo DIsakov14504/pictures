@@ -1,0 +1,12 @@
+from PIL import Image, ImageDraw
+def task3(pic,ans):  
+  image = Image.open(pic)
+  for i in range(image.size[0]):
+      for j in range(image.size[1]):
+        a = image.load()[i, j][0]
+        b = image.load()[i, j][1]
+        c = image.load()[i, j][2]
+        s = (a + b + c)//3
+        ImageDraw.Draw(image).point((i, j), (s, s, s))
+  image.save(ans)
+task3('Unknown.jpg','answer.jpeg')
