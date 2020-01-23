@@ -1,0 +1,13 @@
+from PIL import Image, ImageDraw
+def task8(pic,ans):  
+  image = Image.open(pic)
+  for i in range(image.size[0]):
+      for j in range(image.size[1]):
+        a = image.load()[i, j][0]
+        b = image.load()[i, j][1]
+        c = image.load()[i, j][2]
+        d = image.load()[i, j][3]
+        if (a,b,c)==(0,0,0) or (a,b,c)==(255,255,255):
+          ImageDraw.Draw(image).point((i, j), (a, b, c, 0))
+  image.save(ans)
+task8('ts8.png','answer8.png')
